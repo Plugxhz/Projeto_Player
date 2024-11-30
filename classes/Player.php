@@ -8,9 +8,9 @@ class Player
     private int $nivel = 1;
     private Inventario $inventario;
 
-    public function __construct(string $nickname, $inventario) {
+    public function __construct(string $nickname) {
         $this->nickname = $nickname;
-        $this->inventario = new Inventario($inventario);
+        $this->inventario = new Inventario;
     }
         
     public function getNickname():string {
@@ -50,7 +50,7 @@ class Player
         ($this->inventario)->adicionarItem($item);
         //echo "{$this->getNickname()} coletou o item: {$item->getName()}<br>";
     }
-    public function soltarItem(Item $item){
+    public function soltarItem(string $item){
         ($this->inventario)->removerItem($item);
     }
 

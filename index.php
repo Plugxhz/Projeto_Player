@@ -7,9 +7,9 @@ require_once('./classes/Item.php');
 require_once('./classes/Inventario.php');
 
 // Criando players
-$zequinha = new Player("Zequinha", new Inventario());
+$zequinha = new Player("Zequinha");
 
-$bruninha123 = new Player("Bubu", new Inventario());
+$bruninha123 = new Player("Bubu");
 
 // Criando itens
 $item1 = new Ataque("Espada");
@@ -81,6 +81,17 @@ $bruninha123->subirNivel(2);
         echo "Espaço disponivel: ". ($bruninha123->getInventario()->capacidadeLivre());
     }
 
+// soltando item
+ 
+echo"<h3>Soltando item</h3>";
 
-
+$bruninha123->infoPlayer();
+echo "<br>";
+$bruninha123->soltarItem("Martelo de Thor");
+echo "<br>";
+if($bruninha123->getInventario()->capacidadeLivre() == 0 ){
+    echo "Inventário cheio! <br>";
+} else{
+    echo "Espaço disponivel: ". ($bruninha123->getInventario()->capacidadeLivre());
+}
 ?>

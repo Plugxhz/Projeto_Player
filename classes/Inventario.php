@@ -50,16 +50,19 @@ class Inventario
         
     }
     
-    public function removerItem(Item $item){
-        foreach ($this->itens as $index) {
-            if($item == $index->getName()){
-                unset($this->itens[$index]);
+    public function removerItem(string $item) {
+        $removido = false;
+        foreach ($this->itens as $indexItens => $descri) {
+            if ($item === $descri->getName()) {
+                unset($this->itens[$indexItens]);
+                $this->itens = array_values($this->itens); // Reindex array
+                $removido = true;
+                echo "Item {$item} removido com sucesso! <br>";
                 break;
             }
         }
+        if (!$removido) {
+            echo "Item {$item} não encontrado no inventário! <br>";
+        }
     }
-    
-    
 }
-
-?>
